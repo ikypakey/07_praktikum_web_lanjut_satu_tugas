@@ -1,4 +1,4 @@
-extends('mahasiswa.layout')
+@extends('mahasiswa.layout')
 @section('content')
 <div class="container mt-3">
         <h3 class="text-center mb-5">JURUSAN TEKNOLOGI INFORMASI - POLITEKNIK NEGERI MALANG</h3>
@@ -6,9 +6,9 @@ extends('mahasiswa.layout')
 
         <br><br><br>
 
-        <b>Nama:</b> {{ $mhs->Nama}}<br>
-        <b>NIM: </b>{{ $mhs->Nim}}<br>
-        <b>Kelas: </b> {{ $mhs->kelas->nama_kelas}}<br>
+        <b>Nama &nbsp:</b> {{ $mhs->mahasiswa->nama}}<br>
+        <b>NIM &nbsp &nbsp : </b>{{ $mhs->mahasiswa->nim}}<br>
+        <b>Kelas &nbsp : </b> {{ $mhs->mahasiswa->kelas->nama_kelas}}<br>
 
         <br>
         <table class="table table-bordered">
@@ -18,12 +18,12 @@ extends('mahasiswa.layout')
             <th>Semester</th>
             <th>Nilai</th>
             </tr>
-            @foreach ($mhs -> matakuliah as $nilai)
+            @foreach ($mhs as $n)
             <tr>
-            <td>{{ $nilai->nama_matkul }}</td>
-            <td>{{ $nilai->sks }}</td>
-            <td>{{ $nilai->semester }}</td>
-            <td>{{ $nilai->pivot->nilai }}</td>
+            <td>{{ $n->matakuliah->nama_matkul }}</td>
+            <td>{{ $n->matakuliah->sks }}</td>
+            <td>{{ $n->matakuliah->semester }}</td>
+            <td>{{ $n->nilai  }}</td>
             </tr>
             @endforeach
             </table>

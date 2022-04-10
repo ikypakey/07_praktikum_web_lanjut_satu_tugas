@@ -16,7 +16,7 @@ class MataKuliahSeeder extends Seeder
     public function run()
     {
            $matkul=[
-            ['nama_matkul'=>'Pemograman Berbasis Objek',
+        ['nama_matkul'=>'Pemograman Berbasis Objek',
              'sks' => 3,
              'jam'=>6,
              'semester'=>4,
