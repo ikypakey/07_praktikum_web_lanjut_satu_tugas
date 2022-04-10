@@ -16,17 +16,17 @@ class Mahasiswa_Matakuliah extends Model
 
     public function matakuliah()
     {
-        return $this->belongsTo(Matakuliah::class);
+        return $this->belongsTo(Matakuliah::class,'matakuliah_id');
     }
 
     public function mahasiswa()
     {
-        return $this->belongsTo(Mahasiwa::class);
+        return $this->belongsTo(Mahasiwa::class,'mahasiswa_id',);
     }
 
     public function mhs_matkul()
     {
-        return $this->belongsToMany(Mahasiwa::class, Mahasiswa_Matakuliah::class, 'mahasiswa_id', 'matakuliah_id')-> withPivot('nilai');
+        return $this->belongsToMany(Mahasiwa::class, Mahasiswa_Matakuliah::class, 'mahasiswa_id', 'matakuliah_id');
     }
     
 }

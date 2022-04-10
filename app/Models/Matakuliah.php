@@ -12,9 +12,9 @@ class Matakuliah extends Model
     protected $table = 'matakuliah';
     protected $guarded = ['id'];
 
-    public function mahasiswa()
+    public function mahasiswa_matakuliah()
     {
-        return $this->belongsToMany(Mahasiwa::class, 'mahasiswa_matakuliah', 'matakuliah_id', 'mahasiswa_id')->withPivot('nilai');
+        return $this->hasMany(Mahasiswa_Matakuliah::class,'matakuliah_id');
     }
     
 }
