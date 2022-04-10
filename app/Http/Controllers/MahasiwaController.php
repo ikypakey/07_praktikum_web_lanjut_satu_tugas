@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Mahasiwa;
 use Illuminate\Support\Facades\DB;
 use App\Models\Kelas;
+use App\Models\Mahasiswa_Matakuliah;
 
 
 
@@ -163,5 +164,14 @@ class MahasiwaController extends Controller
         Mahasiwa::where('id_mahasiswa',$id_mahasiswa)->delete();
         return redirect()->route('mahasiswa.index')
             -> with('success', 'Mahasiswa Berhasil Dihapus');  
+    }
+    public function nilai($id_mahasiswa)
+    {
+        // Join relasi ke mahasiswa dan mata kuliah
+        $mhs = Mahasiswa_MataKuliah::with('matakuliah')->where("mahasiswa_id", $id_mahasiswa)->get();
+        $mhs->mahasiswa = Mahasiwa::with('kelas')->where("nim", $id_mahasiswa)->first();
+        //dd($mhs[0]);
+        // Menampilkan nilai
+        return view('mahasiswa.nilai', compact('mhs'));
     }
 }
